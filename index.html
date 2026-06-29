@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Music Player</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
+
 body{
     margin:0;
     display:flex;
@@ -11,17 +13,138 @@ body{
     align-items:center;
     height:100vh;
     background:transparent;
+    font-family:Inter,system-ui,sans-serif;
 }
-audio{
-    width:320px;
+
+.player{
+
+    width:300px;
+    padding:24px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 0 24px rgba(190,170,255,.20),
+    0 0 60px rgba(190,170,255,.10);
+
+    text-align:center;
+
+    transition:.3s;
+
 }
+
+.player:hover{
+
+    box-shadow:
+        0 0 28px rgba(255,255,255,.18),
+        0 0 60px rgba(180,200,255,.18);
+
+}
+
+.title{
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+.artist{
+
+    color:rgba(255,255,255,.65);
+
+    font-size:15px;
+
+    margin-bottom:22px;
+
+}
+
+button{
+
+    width:58px;
+    height:58px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:black;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:scale(1.08);
+
+}
+
 </style>
 </head>
+
 <body>
 
-<audio controls loop>
-    <source src="song.mp3" type="audio/mpeg">
+<div class="player">
+
+<div class="title">
+14.3 Billion Years
+</div>
+
+<div class="artist">
+Andrew Prahlow
+</div>
+
+<button id="play">
+▶
+</button>
+
+<audio id="audio">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
+
+</div>
+
+<script>
+
+const audio=document.getElementById("audio");
+const play=document.getElementById("play");
+
+play.onclick=()=>{
+
+if(audio.paused){
+
+audio.play();
+
+play.innerHTML="❚❚";
+
+}else{
+
+audio.pause();
+
+play.innerHTML="▶";
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
